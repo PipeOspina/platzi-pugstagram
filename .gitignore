@@ -1,0 +1,3 @@
+public/bundle.*
+.env.*.local
+node_modules/**/*

@@ -1,0 +1,25 @@
+{
+  "name": "platzi-pugstagram",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Felipe Ospina <pipe.98.oh@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn remove-build && node esbuild.config.js",
+    "build:prod": "yarn remove-build && NODE_ENV=production node esbuild.config.js",
+    "dev": "node esbuild.config.js -w -o",
+    "remove-build": "rm -rf ./public/bundle.*"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "svelte": "^3.38.2"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^2.0.0",
+    "esbuild": "^0.12.5",
+    "esbuild-serve": "^1.0.1",
+    "esbuild-svelte": "^0.5.1",
+    "svelte-preprocess": "^4.7.3"
+  },
+  "type": "module"
+}
