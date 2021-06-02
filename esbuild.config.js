@@ -4,7 +4,8 @@ import esbuildServe from 'esbuild-serve';
 import dotenv from 'dotenv';
 
 const { env } = process;
-const path = `./.env.${env.NODE_ENV || 'development'}.local`;
+const nodeEnv = env.NODE_ENV || 'development';
+const path = `./.env.${nodeEnv}.local`;
 
 dotenv.config({ path })
 
@@ -14,14 +15,21 @@ Object.entries(env).forEach((entry) => {
     define[`process.env.${key}`] = `'${value}'`;
 });
 
+console.log(env.NODE_EVN);
+
 esbuildServe({
     entryPoints: ['./src/app.ts'],
     bundle: true,
-    minify: env.NODE_EVN === 'production',
+    minify: nodeEnv === 'production',
     sourcemap: true,
     plugins: [
         esbuildSvelte({
             preprocess: sveltePreprocess(),
+            compileOptions: {
+                dev: nodeEnv === 'development',
+                sourcemap: true,
+                preserveComments: false,
+            },
         }),
     ],
     outfile: './public/bundle.js',
