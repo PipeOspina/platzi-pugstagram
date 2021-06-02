@@ -27,7 +27,6 @@ esbuildServe({
             preprocess: sveltePreprocess(),
             compileOptions: {
                 dev: nodeEnv === 'development',
-                sourcemap: true,
                 preserveComments: false,
             },
         }),

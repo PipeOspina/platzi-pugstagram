@@ -5,8 +5,8 @@
   "author": "Felipe Ospina <pipe.98.oh@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn remove-build && node esbuild.config.js",
-    "build:prod": "yarn remove-build && NODE_ENV=production node esbuild.config.js",
+    "build:dev": "npm run remove-build && node esbuild.config.js",
+    "build": "npm run remove-build && NODE_ENV=production node esbuild.config.js",
     "dev": "node esbuild.config.js -w -o",
     "remove-build": "rm -rf ./public/bundle.*"
   },
